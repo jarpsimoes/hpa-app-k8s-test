@@ -2,6 +2,7 @@
 
 name: "hpa-app-k8s-test"
 replicasCount: 1
+maxReplicaCount: 10
 version: "latest"
 resources:
   limits:

@@ -17,7 +17,7 @@ steps:
     - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-test'
     - KUBECONFIG=/workspace/.kube/config  
 
-- name: 'gcr.io/cloud-builders/helm'
+- name: 'gcr.io/$PROJECT_ID/helm'
   args:
     - 'upgrade'
     - '--install'

@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: "{{ .Values.name }}-service"
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: "{{ .Values.name }}-app"
   ports:

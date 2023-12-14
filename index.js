@@ -34,6 +34,12 @@ app.get('/health', (req, res) => {
 	res.status(200).send(JSON.stringify({ status: 'UP' }));
 });
 
+app.get('/', (req, res) => {
+	logger.info("service called /health");
+	res.setHeader('Content-Type', 'application/json');
+	res.status(200).send(JSON.stringify({ status: 'UP' }));
+});
+
 
 const port = 3000;
 app.listen(port, () => {

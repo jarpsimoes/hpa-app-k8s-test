@@ -1,0 +1,12 @@
+# Defaults
+
+name: "hpa-app-k8s-test"
+replicasCount: 1
+version: "latests"
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi

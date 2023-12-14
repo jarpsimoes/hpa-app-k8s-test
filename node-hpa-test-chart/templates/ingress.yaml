@@ -1,0 +1,11 @@
+apiVersion: "networking.k8s.io/v1"
+kind: "Ingress"
+metadata:
+  name: "test-application"
+  namespace: "hpa-app-k8s-test"
+spec:
+  defaultBackend:
+    service:
+      name: "hpa-app-k8s-test-service"
+      port:
+        number: 80

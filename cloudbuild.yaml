@@ -23,7 +23,9 @@ steps:
     - '--install'
     - 'node-hpa-test'
     - './node-hpa-test-chart'
-    - '--set=version=$COMMIT_SHA'
+    - '--set=version=$COMMIT_SHA,project_id=$PROJECT_ID'
+    - '--namespace=hpa-app-k8s-test'
+    - '--create-namespace'
     - '--wait'
   env:
     - 'HELM_HOME=/workspace'

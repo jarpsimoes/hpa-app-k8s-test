@@ -1,6 +1,7 @@
 # Defaults
 
 name: "hpa-app-k8s-test"
+project_id: ""
 replicasCount: 1
 maxReplicaCount: 10
 version: "latest"

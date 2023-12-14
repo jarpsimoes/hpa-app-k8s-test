@@ -6,6 +6,7 @@ spec:
   type: ClusterIP
   selector:
     app: "{{ .Values.name }}-app"
+    scope: test
   ports:
     - protocol: TCP
       port: 80

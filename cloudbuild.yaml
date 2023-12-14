@@ -7,12 +7,35 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/hpa-app-k8s-test:$COMMIT_SHA']
 
-# ...
-# Step 3: Deploy the Helm chart
-- name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
+- name: gcr.io/cloud-builders/kubectl
+  id: Configure kubectl
   args:
-  - '-c'
-  - |
-    gcloud container clusters get-credentials my-cluster --zone us-central1-a
-    helm upgrade --install node-hpa-test ./node-hpa-test-chart --set version=$COMMIT_SHA
+    - cluster-info
+  env:
+    - 'PROJECT=$PROJECT_ID'
+    - 'CLOUDSDK_COMPUTE_REGION=europe-west1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-test'
+    - KUBECONFIG=/workspace/.kube/config  
+
+- name: 'gcr.io/cloud-builders/helm'
+  args:
+    - 'upgrade'
+    - '--install'
+    - 'node-hpa-test'
+    - './node-hpa-test-chart'
+    - '--set=version=$COMMIT_SHA'
+    - '--wait'
+  env:
+    - 'HELM_HOME=/workspace'
+    - 'KUBECONFIG=/workspace/.kube/config'
+    - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-test'
+
+# Step 3: Deploy the Helm chart
+#- name: 'gcr.io/cloud-builders/gcloud'
+#  entrypoint: 'bash'
+#  args:
+#  - '-c'
+#  - |
+#    gcloud container clusters get-credentials cluster-test --zone europe-west1-b
+#    helm upgrade --install node-hpa-test ./node-hpa-test-chart --set version=$COMMIT_SHA

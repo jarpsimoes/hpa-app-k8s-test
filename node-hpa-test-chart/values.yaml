@@ -8,7 +8,7 @@ version: "latest"
 resources:
   limits:
     cpu: 100m
-    memory: 64Mi
+    memory: 126Mi
   requests:
     cpu: 25m
     memory: 32Mi

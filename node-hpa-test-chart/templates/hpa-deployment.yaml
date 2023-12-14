@@ -10,7 +10,7 @@ spec:
         type: Percent
         value: 10
       selectPolicy: Max
-      stabilizationWindowSeconds: 300
+      stabilizationWindowSeconds: 100
     scaleUp:
       policies:
       - periodSeconds: 15
@@ -20,7 +20,7 @@ spec:
         type: Percent
         value: 100
       selectPolicy: Max
-      stabilizationWindowSeconds: 0
+      stabilizationWindowSeconds: 100
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment

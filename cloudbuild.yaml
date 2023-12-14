@@ -6,3 +6,13 @@ steps:
 # Step 2: Push the Docker image to Google Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/hpa-app-k8s-test:$COMMIT_SHA']
+
+# ...
+# Step 3: Deploy the Helm chart
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud container clusters get-credentials my-cluster --zone us-central1-a
+    helm upgrade --install node-hpa-test ./node-hpa-test-chart --set version=$COMMIT_SHA

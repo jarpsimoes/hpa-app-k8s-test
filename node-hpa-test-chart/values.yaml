@@ -2,7 +2,7 @@
 
 name: "hpa-app-k8s-test"
 replicasCount: 1
-version: "latests"
+version: "latest"
 resources:
   limits:
     cpu: 100m

@@ -1,0 +1,23 @@
+{
+  "name": "hpa-autoscale-poc",
+  "version": "1.0.0",
+  "description": "Test autoscale",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "build-podman": "podman build -t docker.io/jarpsimoes/test-high-scale .",
+    "build-docker": "docker build -t docker.io/jarpsimoes/test-high-scale .",
+    "deploy-k8s": "kubectl apply -f ./k8s-deployment/",
+    "build-and-deploy-podman": "npm run build-podman && podman push docker.io/jarpsimoes/test-high-scale && npm run deploy-k8s",
+    "build-and-deploy-docker": "npm run build-podman && docker push docker.io/jarpsimoes/test-high-scale && npm run deploy-k8s"
+  },
+  "keywords": [
+    "Test"
+  ],
+  "author": "JSIMOES",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

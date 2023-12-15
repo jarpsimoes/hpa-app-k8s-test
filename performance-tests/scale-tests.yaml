@@ -7,9 +7,9 @@ execution:
   ramp-up: 3ms
   hold-for: 3m
   scenario: service-hight-test
-- concurrency: 50
+- concurrency: 20
   ramp-up: 3ms
-  hold-for: 7m
+  hold-for: 12m
   scenario: service-fast-test
 
 scenarios:
@@ -52,7 +52,7 @@ scenarios:
     headers:
       Host: 34.117.135.79
     think-time: 1s
-    connections: 100
+    connections: 20
     timeout: 60s
     assertions:
       - subject: response-time

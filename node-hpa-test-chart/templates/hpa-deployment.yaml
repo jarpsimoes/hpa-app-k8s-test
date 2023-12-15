@@ -21,7 +21,7 @@ spec:
         value: 2
       - periodSeconds: 15
         type: Percent
-        value: 60
+        value: 80
       selectPolicy: Max
       stabilizationWindowSeconds: 30
   scaleTargetRef:

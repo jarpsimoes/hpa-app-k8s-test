@@ -7,8 +7,8 @@ maxReplicaCount: 10
 version: "latest"
 resources:
   limits:
-    cpu: 100m
-    memory: 126Mi
+    cpu: 50m
+    memory: 64Mi
   requests:
     cpu: 25m
     memory: 32Mi

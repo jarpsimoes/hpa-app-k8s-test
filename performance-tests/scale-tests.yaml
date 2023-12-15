@@ -1,0 +1,63 @@
+execution:
+- concurrency: 200
+  ramp-up: 3ms
+  hold-for: 3m
+  scenario: service-test
+- concurrency: 200
+  ramp-up: 3ms
+  hold-for: 3m
+  scenario: service-hight-test
+- concurrency: 50
+  ramp-up: 3ms
+  hold-for: 7m
+  scenario: service-fast-test
+
+scenarios:
+  service-test:
+    requests:
+      - http://34.117.135.79/service
+    method: GET
+    headers:
+      Host: 34.117.135.79
+    think-time: 1s
+    connections: 200
+    timeout: 60s
+    assertions:
+      - subject: response-time
+        condition: lessThan
+        value: 2500
+      - subject: error-percentage
+        condition: lessThan
+        value: 3
+  service-hight-test:
+    requests:
+      - http://34.117.135.79/highservice/4000
+    method: GET
+    headers:
+      Host: 34.117.135.79
+    think-time: 1s
+    connections: 200
+    timeout: 60s
+    assertions:
+      - subject: response-time
+        condition: lessThan
+        value: 5000
+      - subject: error-percentage
+        condition: lessThan
+        value: 3
+  service-fast-test:
+    requests:
+      - http://34.117.135.79/highservice/50
+    method: GET
+    headers:
+      Host: 34.117.135.79
+    think-time: 1s
+    connections: 100
+    timeout: 60s
+    assertions:
+      - subject: response-time
+        condition: lessThan
+        value: 5000
+      - subject: error-percentage
+        condition: lessThan
+        value: 3

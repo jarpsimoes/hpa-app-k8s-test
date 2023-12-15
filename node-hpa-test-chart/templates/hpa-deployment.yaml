@@ -7,10 +7,13 @@ spec:
     scaleDown:
       policies:
       - periodSeconds: 30
+        type: Pods
+        value: 1
+      - periodSeconds: 30
         type: Percent
         value: 30
       selectPolicy: Max
-      stabilizationWindowSeconds: 20
+      stabilizationWindowSeconds: 30
     scaleUp:
       policies:
       - periodSeconds: 15
@@ -20,7 +23,7 @@ spec:
         type: Percent
         value: 60
       selectPolicy: Max
-      stabilizationWindowSeconds: 20
+      stabilizationWindowSeconds: 30
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment

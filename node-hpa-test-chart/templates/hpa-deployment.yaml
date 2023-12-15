@@ -6,11 +6,11 @@ spec:
   behavior:
     scaleDown:
       policies:
-      - periodSeconds: 60
+      - periodSeconds: 30
         type: Percent
-        value: 20
+        value: 30
       selectPolicy: Max
-      stabilizationWindowSeconds: 100
+      stabilizationWindowSeconds: 20
     scaleUp:
       policies:
       - periodSeconds: 15
@@ -18,9 +18,9 @@ spec:
         value: 2
       - periodSeconds: 15
         type: Percent
-        value: 80
+        value: 60
       selectPolicy: Max
-      stabilizationWindowSeconds: 100
+      stabilizationWindowSeconds: 20
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment

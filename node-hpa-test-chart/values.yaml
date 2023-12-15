@@ -2,7 +2,7 @@
 
 name: "hpa-app-k8s-test"
 project_id: ""
-replicasCount: 1
+replicasCount: 2
 maxReplicaCount: 10
 version: "latest"
 resources:
